@@ -8,7 +8,7 @@ let notes = [500,200,100,50,20,10,5,2,1]
 let amountToBeReturn = cashGiven.value - billAmount.value;
 
 function showNotes() {
-    if(amountToBeReturn)
+    if(amountToBeReturn<=0)
 }
 
 function errMesgBill() {
