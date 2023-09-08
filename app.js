@@ -1,33 +1,47 @@
-let billAmount = document.querySelector("#bill-amount");
-let cashGiven = document.querySelector("#cash-given");
-let errorMessage = document.querySelector("error-message");
-let buttonCheck = document.querySelector("#button-check");
+const billAmount = document.querySelector("#bill-amount");
+const cashGiven = document.querySelector("#cash-given");
+const errorMessage = document.querySelector("#error-message");
+const buttonCheck = document.querySelector("#button-check");
+const noOfNotes = document.querySelectorAll(".no-of-notes");
 
-let notes = [500,200,100,50,20,10,5,2,1]
+const notesAvailable = [500,200,100,50,20,10,5,2,1];
 
-function showNotes() {
+buttonCheck.addEventListener("click",function showNotes(){
     hideMessage();
-    if(billAmount>0){
+    if(billAmount.value > 0){
         if(cashGiven.value >= billAmount.value){
-            let amountToBeReturn = cashGiven.value - billAmount.value;
+            const amountToBeReturn = cashGiven.value - billAmount.value;
             calculateNotes(amountToBeReturn);
-        }else{
+        }
+        else{
             showMessage("Bhai yaar kya kar raha h tu, matlab majak hai kya.");
         }
-    }else{
-        showMessage("Invalid Bill AMount");
+    }
+    else{
+        showMessage("Invalid Bill Amount");
+    }
+});
+
+
+function hideMessage() {
+    errorMessage.style.display = "none";
+}
+
+function showMessage(msg){
+    errorMessage.style.display = "block";
+    errorMessage.innerText = msg;
+}
+
+function calculateNotes(amountToBeReturn) {
+    for(let i=0; i<notesAvailable.length; i++){
+        const notesNeedReturn = Math.trunc(
+            amountToBeReturn/notesAvailable[i]
+        );
+        amountToBeReturn %= notesAvailable[i];
+        noOfNotes[i].innerText = notesNeedReturn;
+        console.log(notesNeedReturn);
     }
 }
-
-showMessage(msg){
-    errorMessage.style.display = block;
-    errorMessage.innerText = "Bhai Yaar! Kya kar hai tu, Matlab Majak h kya.";
-}
-
-hideMessage(){
-    errorMessage.style.display = none;
-}
-
 
 function errMesgBill() {
     return "Invalid Bill Amount"
@@ -36,5 +50,3 @@ function errMesgBill() {
 function errMesgCash() {
     return "Invalid Cash Amount"
 }
-
-buttonCheck.addEventListener("click",showNotes);
