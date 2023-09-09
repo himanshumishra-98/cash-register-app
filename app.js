@@ -8,7 +8,10 @@ const notesAvailable = [500,200,100,50,20,10,5,2,1];
 
 buttonCheck.addEventListener("click",function showNotes(){
     hideMessage();
-    if(billAmount.value > 0){
+    if(isNaN(billAmount.value) | isNaN(cashGiven.value)){
+        showMessage("Invalid Amount, Please enter numeric value.")
+    }
+    else if(billAmount.value > 0){
         if(cashGiven.value >= billAmount.value){
             const amountToBeReturn = cashGiven.value - billAmount.value;
             calculateNotes(amountToBeReturn);
@@ -22,6 +25,16 @@ buttonCheck.addEventListener("click",function showNotes(){
     }
 });
 
+
+billAmount.addEventListener("keypress",function hideCashGiven(event){
+    if(event.key==="Enter"){
+        if(billAmount.value !== ""){
+            cashGiven.style.display = "default";
+        }else{
+            cashGiven.style.display = "none";
+        }
+    }
+});
 
 function hideMessage() {
     errorMessage.style.display = "none";
