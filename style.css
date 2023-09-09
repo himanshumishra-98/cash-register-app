@@ -50,10 +50,6 @@ body {
     max-width: 260px;
 }
 
-.hidden-input{
-    display: none;
-}
-
 #button-check {
     display: block;
     margin: auto;

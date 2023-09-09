@@ -25,17 +25,6 @@ buttonCheck.addEventListener("click",function showNotes(){
     }
 });
 
-
-billAmount.addEventListener("keypress",function hideCashGiven(event){
-    if(event.key==="Enter"){
-        if(billAmount.value !== ""){
-            cashGiven.style.display = "default";
-        }else{
-            cashGiven.style.display = "none";
-        }
-    }
-});
-
 function hideMessage() {
     errorMessage.style.display = "none";
 }
@@ -54,12 +43,4 @@ function calculateNotes(amountToBeReturn) {
         noOfNotes[i].innerText = notesNeedReturn;
         console.log(notesNeedReturn);
     }
-}
-
-function errMesgBill() {
-    return "Invalid Bill Amount"
-}
-
-function errMesgCash() {
-    return "Invalid Cash Amount"
 }
