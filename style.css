@@ -68,3 +68,38 @@ body {
     font-size: larger;
     margin: 1rem 0 0;
 }
+
+.change-table {
+    margin: 1rem auto;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+th, td {
+    border: 2px solid var(--primary-color);
+    width: 0%;
+    border-collapse: collapse;
+    padding: 0.5rem;
+}
+
+footer {
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
+    font-size: large;
+}
+
+.footer-list {
+    margin: 1rem;
+}
+
+a,img,li {
+    display: inline;
+}
+
+img {
+    width: 40px;
+    padding: 0.2rem;
+}
