@@ -7,7 +7,7 @@ const noOfNotes = document.querySelectorAll(".no-of-notes");
 const notesAvailable = [500,200,100,50,20,10,5,2,1];
 
 buttonCheck.addEventListener("click",function showNotes(){
-    hideMessage();
+    resetDefault();
     let cash = parseInt(cashGiven.value);
     let bill = parseInt(billAmount.value);
 
@@ -29,10 +29,6 @@ buttonCheck.addEventListener("click",function showNotes(){
     }
 });
 
-function hideMessage() {
-    errorMessage.style.display = "none";
-}
-
 function showMessage(msg){
     errorMessage.style.display = "block";
     errorMessage.innerText = msg;
@@ -46,5 +42,12 @@ function calculateNotes(amountToBeReturn) {
         amountToBeReturn %= notesAvailable[i];
         noOfNotes[i].innerText = notesNeedReturn;
         console.log(notesNeedReturn);
+    }
+}
+
+function resetDefault(){
+    errorMessage.style.display = "none";
+    for(let i=0; i<notesAvailable.length; i++){
+        noOfNotes[i].innerText = '';
     }
 }
