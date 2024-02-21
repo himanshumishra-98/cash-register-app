@@ -8,16 +8,20 @@ const notesAvailable = [500,200,100,50,20,10,5,2,1];
 
 buttonCheck.addEventListener("click",function showNotes(){
     hideMessage();
-    if(isNaN(billAmount.value) | isNaN(cashGiven.value)){
+    let cash = parseInt(cashGiven.value);
+    let bill = parseInt(billAmount.value);
+
+    if(isNaN(bill) || isNaN(cash)){
         showMessage("Invalid Amount, Please enter numeric value.")
     }
-    else if(billAmount.value > 0){
-        if(cashGiven.value >= billAmount.value){
-            const amountToBeReturn = cashGiven.value - billAmount.value;
+    else if(bill > 0){
+
+        if(cash > bill){
+            const amountToBeReturn = cash - bill;
             calculateNotes(amountToBeReturn);
         }
         else{
-            showMessage("Bhai yaar kya kar raha h tu, matlab majak hai kya.");
+            showMessage("Do you wanna wash plates?");
         }
     }
     else{
